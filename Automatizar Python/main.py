@@ -2,13 +2,13 @@ import openpyxl
 import pyperclip
 import pyautogui
 #entrar na planilha
-workbook = openpyxl.load_workbook('produtos_ficticios.xlsx')
+workbook = openpyxl.load_workbook('Automatizar Python/produtos_ficticios.xlsx')
 sheet_produtos = workbook['Produtos']
 #Copiar informação de um campo e colar no seu campo correspondente
 for linha in sheet_produtos.iter_rows(min_row=2):
     nome_produto = linha[0].value
     pyperclip.copy(nome_produto)
-    pyautogui.click(1449,341,duration=1)
+    pyautogui.click(809,200,duration=1)
     pyautogui.hotkey('ctrl','v')
     pyautogui.hotkey('tab')
     descricao = linha[1].value
@@ -16,14 +16,46 @@ for linha in sheet_produtos.iter_rows(min_row=2):
     pyautogui.hotkey('ctrl','v')
     pyautogui.hotkey('tab')
     categoria = linha[2].value
+    pyperclip.copy(categoria)
+    pyautogui.hotkey('ctrl','v')
+    pyautogui.hotkey('tab')
     codigo_produto = linha[3].value
+    pyperclip.copy(codigo_produto)
+    pyautogui.hotkey('ctrl','v')
+    pyautogui.hotkey('tab')
     peso_produto = linha[4].value
+    pyperclip.copy(peso_produto)
+    pyautogui.hotkey('ctrl','v')
+    pyautogui.hotkey('tab')
     dimensoes = linha[5].value
+    pyperclip.copy(dimensoes)
+    pyautogui.hotkey('ctrl','v')
+    pyautogui.click(814,727,duration =1)
     preco = linha[6].value
+    pyperclip.copy(preco)
+    pyautogui.click(800,225,duration=1)
+    pyautogui.hotkey('ctrl','v')
+    pyautogui.hotkey('tab')
     quantidade_estoque = linha[7].value
+    pyperclip.copy(quantidade_estoque)
+    pyautogui.hotkey('ctrl','v')
+    pyautogui.hotkey('tab')
     data_validade = linha[8].value
+    pyperclip.copy(data_validade)
+    pyautogui.hotkey('ctrl','v')
+    pyautogui.hotkey('tab')
     cor_produto = linha[9].value
+    pyperclip.copy(cor_produto)
+    pyautogui.hotkey('ctrl','v')
     tamanho = linha[10].value
-    material = linha[11].value
+    if tamanho == 'Pequeno':
+        pyautogui.hotkey('tab')
+    elif tamanho == 'Médio':
+        pyautogui.click(814,620,duration=1)
+    elif tamanho == 'Grande':
+        pyautogui.click(831,643,duration=1)
+    pyautogui.click(800,651,duration=1)
+
+    """material = linha[11].value
     codigo_barras = linha[12].value
-    localizacao = linha[13].value
+    localizacao = linha[13].value"""
